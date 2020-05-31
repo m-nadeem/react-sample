@@ -2,24 +2,19 @@
 import React from 'react';
 import UseRefactorObject from '../../Hooks/CustomHooks';
 import { ISchedule } from '../../Interfaces/ISchedule';
+import { MiscService } from '../../Services/Utils/MiscService';
 
-const Schedule = (obj) => {
-    const OpeningArr: Array<ISchedule> = UseRefactorObject(obj.openingHours);
-    
-    const FormatTime = (data): string =>  {
-            const FromDate = new Date(data.from * 100000);
-            const ToDate = new Date(data.to * 10000);
-
-            return data.isOpen ? `${FromDate.getHours().toString().padStart(2, "0")}:${FromDate.getMinutes().toString().padEnd(2, "0")} - ${ToDate.getHours().toString().padStart(2, "0")}:${ToDate.getMinutes().toString().padEnd(2, "0")}` : "Closed";
-    }
+const Schedule = (Props) => {
+    const scheduleArr: Array<ISchedule> = UseRefactorObject(Props.openingHours);
+    const miscService = new MiscService();
 
     return (
         <div>
-            {OpeningArr.map(d => (
-                    <div key={d.id}>
-                        <span className="card-text">{d.day}: </span>
-                        <span>{FormatTime(d)}</span>
-                    </div>                    
+            {scheduleArr.map(scheduleObject => (
+                <div key={scheduleObject.id}>
+                    <span className="card-text">{miscService.FormatDayName(scheduleObject)}: </span>
+                    <span>{miscService.FormatTime(scheduleObject)}</span>
+                </div>
             ))}
         </div>
     )

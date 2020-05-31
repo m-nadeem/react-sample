@@ -4,7 +4,7 @@ import * as React from 'react'
 import ClinicList from './Components/ClinicList/ClinicList';
 import { IProps } from './Interfaces/IProps';
 import { IState } from './Interfaces/IState';
-import { DataService } from './Services/DataService';
+import { DataService } from './Services/Data/DataService';
 
 
 class App extends React.Component<IProps, IState> {

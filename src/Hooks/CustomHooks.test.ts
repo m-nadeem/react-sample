@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import useRefactorObject from './CustomHooks';
-import { DataService } from '../Services/DataService';
+import { DataService } from '../Services/Data/DataService';
 
 test('return array from object', async () => {
     const dataService = new DataService();

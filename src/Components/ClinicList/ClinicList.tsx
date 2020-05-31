@@ -3,11 +3,11 @@ import * as React from 'react'
 import { IState } from '../../Interfaces/IState';
 import Schedule from '../Schedule/Schedule';
 
-const ClinicList = (obj: IState) => {
+const ClinicList = (Props: IState) => {
     return (
         <div>
             <h1>Clinics & Weekly Schedule</h1>
-            {obj.clinics.map((clinic) => (
+            {Props.clinics.map((clinic) => (
                 <div className="card" key={clinic.id}>
                     <div className="card-body">
                         <h5 className="card-title">{clinic.name}</h5>
